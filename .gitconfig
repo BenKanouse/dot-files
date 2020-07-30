@@ -1,4 +1,16 @@
 # This is Git's per-user configuration file.
 [user]
-  name = BenKanouse
+  name = Ben Kanouse
   email = kanobt61@gmail.com
+[github]
+  user = BenKanouse
+[alias]
+  aa = add --all --intent-to-add
+  co = checkout
+  s = status
+  d = diff --color
+  lol = log --graph --oneline --decorate
+  poh = push origin HEAD
+  r = reflog --date=iso
+[color]
+  ui = auto
