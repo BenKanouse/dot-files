@@ -35,3 +35,13 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ### rvm
 
 Follow the instructions here: https://rvm.io/rvm/install
+
+### ohmyzsh
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+NOTE: this will overwrite the .zsh file so you might need to consolidate your old file and the new one created.
+
+NOTE: there are some prerequisites that I happened to have already installed for more information read their github page https://github.com/ohmyzsh/ohmyzsh
