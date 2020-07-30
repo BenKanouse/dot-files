@@ -4,6 +4,8 @@
   email = kanobt61@gmail.com
 [github]
   user = BenKanouse
+[core]
+  editor = nvim
 [alias]
   aa = add --all --intent-to-add
   co = checkout
