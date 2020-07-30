@@ -12,3 +12,21 @@ dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
+## Items to install
+
+### Homebrew https://brew.sh/
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+brew install postgresql
+brew services start postgresql
+brew cask install atom
+brew cask install sublime-text
+brew install neovim
+brew install tmate
+```
+
+### rvm
+
+Follow the instructions here: https://rvm.io/rvm/install
