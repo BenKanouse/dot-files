@@ -9,7 +9,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/vim-gist'
 Plug 'mattn/webapi-vim'
 Plug 'mechatroner/rainbow_csv'
@@ -139,3 +138,10 @@ if has("autocmd")
     autocmd BufNewFile *.rb 0r ~/dot-files/skeleton.rb
   augroup END
 endif
+
+" Commit messages
+function GitCommitOptions()
+  setlocal spell
+endfunc
+
+autocmd FileType gitcommit call GitCommitOptions()
