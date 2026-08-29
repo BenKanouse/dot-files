@@ -89,10 +89,6 @@ nmap <silent> <C-x> :TestLast <CR>
 
 let test#strategy = "neovim"
 
-" Toggle F2 for paste mode
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-
 " Toggle F3 for spell checking
 map <F3> :setlocal spell! spelllang=en_us<CR>
 imap <F3> <C-o>:setlocal spell! spelllang=en_us<CR>
