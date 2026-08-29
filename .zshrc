@@ -69,7 +69,6 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  Z
   bundler
   colored-man-pages
   colorize
@@ -77,18 +76,25 @@ plugins=(
   fancy-ctrl-z
   git
   history
-  iterm2
-  osx
   rails
   rake
   safe-paste
-  thefuck
   tmux
   tmuxinator
   vi-mode
   web-search
-  zsh_reload
+  z
 )
+
+# These plugins are specific to macOS or optional tools. Keep them out of the
+# list unless the current machine supports them.
+if [[ "$OSTYPE" == darwin* ]]; then
+  plugins+=(iterm2 osx)
+fi
+
+if command -v thefuck >/dev/null 2>&1; then
+  plugins+=(thefuck)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,8 +130,29 @@ export LESS="-RX"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/sbin:$PATH"
+
+# Load Homebrew when it is installed. This handles both Intel and Apple
+# Silicon Macs without requiring Homebrew on Linux.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+elif command -v brew >/dev/null 2>&1; then
+  eval "$(brew shellenv)"
+fi
+
+if [[ -d /usr/local/sbin ]]; then
+  export PATH="/usr/local/sbin:$PATH"
+fi
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+if command -v nvim >/dev/null 2>&1; then
+  alias vim="nvim"
+fi
+
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
